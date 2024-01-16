@@ -208,13 +208,35 @@ section {
   margin-top: 5rem;
 }
 
-/* component */
+/* components */
 
 .primary-header {
   background-color: var(--clr-primary-400);
+  background-size: cover;
   min-height: 50vh;
   padding: 2rem;
   border-radius: var(--br);
+  display: flex;
+  flex-direction: column;
+}
+
+.primary-header .container {
+  width: 100%;
+  margin-block: auto;
+}
+
+.primary-header .container > * {
+  max-width: 12ch;
+}
+
+.page-home .primary-header {
+  background-image: url(img/hero.jpg);
+  background-position: center center;
+}
+
+.page-blog .primary-header {
+  background-image: url(img/blog.jpg);
+  background-position: left center;
 }
 
 .primary-nav {
@@ -263,6 +285,29 @@ section {
     padding: 0;
     gap: 3em;
   }
+}
+
+.secondary-nav {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.secondary-nav > a {
+  margin-left: auto;
+}
+
+.categories {
+  display: flex;
+  gap: 1rem;
+}
+
+.categories button {
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: var(--fs-200);
+  background: transparent;
+  border: 0;
 }
 
 .article-preview h3 {
@@ -367,4 +412,60 @@ footer {
 
 .intro {
   --flow-spacer: 2em;
+}
+
+/* blog page styles */
+
+.article-grid {
+  display: grid;
+  gap: 3em 2em;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.article-grid > * {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 30em) {
+  .article-grid > *:not(:first-child) {
+    grid-column: span 3;
+  }
+}
+
+@media (min-width: 40em) {
+  .article-grid > *:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .article-grid > .article-preview:first-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr min-content 1fr;
+    gap: 1em 2em;
+  }
+
+  .article-grid > .article-preview:first-child img {
+    grid-row: span 3;
+    height: 17.5rem;
+  }
+
+  .article-grid > .article-preview:first-child h3 {
+    margin-top: auto;
+  }
+
+  .article-grid > *:nth-child(2),
+  .article-grid > *:nth-child(3) {
+    grid-column: span 3;
+  }
+
+  .article-grid > *:nth-child(4),
+  .article-grid > *:nth-child(5),
+  .article-grid > *:nth-child(6) {
+    grid-column: span 2;
+  }
+
+  .article-grid > *:nth-child(7),
+  .article-grid > *:nth-child(8) {
+    grid-column: span 2;
+  }
 }
